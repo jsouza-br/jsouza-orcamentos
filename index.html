@@ -11,134 +11,110 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --amarelo:#E8C84A;
-  --amarelo-dark:#C9A82C;
-  --marrom:#2C2010;
-  --marrom-mid:#4A3520;
-  --bg:#F7F5F0;
-  --bg-card:#FFFFFF;
-  --text:#1A1208;
-  --text-muted:#6B5C40;
-  --border:#E2D9C8;
-  --radius:10px;
-  --shadow:0 2px 12px rgba(44,32,16,0.08);
+  --amarelo:#E8C84A;--amarelo-dark:#C9A82C;--marrom:#2C2010;--marrom-mid:#4A3520;
+  --bg:#F7F5F0;--bg-card:#FFFFFF;--text:#1A1208;--text-muted:#6B5C40;
+  --border:#E2D9C8;--radius:10px;--shadow:0 2px 12px rgba(44,32,16,0.08);
 }
 body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
-
-/* HEADER */
 .app-header{background:var(--marrom);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
 .app-header .logo-area{display:flex;align-items:center;gap:14px}
 .app-header .logo-area span{color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;letter-spacing:.04em}
 .app-header .logo-area small{display:block;color:var(--amarelo);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;margin-top:-2px}
 .header-badge{background:var(--amarelo);color:var(--marrom);font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:.06em;text-transform:uppercase}
-
-/* LAYOUT */
 .app-body{display:grid;grid-template-columns:340px 1fr;min-height:calc(100vh - 64px)}
-
-/* SIDEBAR */
-.sidebar{background:var(--marrom);padding:1.5rem;display:flex;flex-direction:column;gap:1rem;border-right:1px solid rgba(255,255,255,0.06)}
+.sidebar{background:var(--marrom);padding:1.5rem;display:flex;flex-direction:column;gap:1rem;border-right:1px solid rgba(255,255,255,0.06);overflow-y:auto}
 .sidebar-section{background:rgba(255,255,255,0.05);border-radius:var(--radius);padding:1.25rem;border:1px solid rgba(255,255,255,0.08)}
 .sidebar-section h3{color:var(--amarelo);font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:1rem}
-.field{margin-bottom:.875rem}
-.field:last-child{margin-bottom:0}
+.field{margin-bottom:.875rem}.field:last-child{margin-bottom:0}
 .field label{display:block;font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px}
 .field input,.field select,.field textarea{width:100%;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:9px 12px;font-size:14px;color:#fff;font-family:'Barlow',sans-serif;transition:border-color .15s}
 .field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,0.3)}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--amarelo)}
 .field select option{background:var(--marrom);color:#fff}
 .field textarea{resize:vertical;min-height:60px}
-
-/* MAIN CONTENT */
 .main{padding:1.75rem;overflow-y:auto}
 .main-title{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1rem}
-
-/* SERVICE CARDS */
-.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;margin-bottom:1.75rem}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-bottom:1.75rem}
 .svc-card{background:var(--bg-card);border:1.5px solid var(--border);border-radius:var(--radius);padding:1rem 1.1rem;cursor:pointer;transition:all .15s;position:relative}
 .svc-card:hover{border-color:var(--amarelo-dark);box-shadow:var(--shadow)}
 .svc-card.active{border-color:var(--amarelo);background:#FFFBEE;box-shadow:0 0 0 3px rgba(232,200,74,0.15)}
 .svc-card .svc-icon{width:32px;height:32px;background:var(--bg);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:.75rem;font-size:16px}
-.svc-card.active .svc-icon{background:var(--amarelo);color:var(--marrom)}
+.svc-card.active .svc-icon{background:var(--amarelo)}
 .svc-card .svc-name{font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px;line-height:1.3}
-.svc-card .svc-price{font-size:15px;font-weight:700;color:var(--marrom-mid)}
+.svc-card .svc-price{font-size:14px;font-weight:700;color:var(--marrom-mid)}
 .svc-card .svc-note{font-size:11px;color:var(--text-muted);margin-top:3px}
-.svc-card .check{position:absolute;top:10px;right:10px;width:20px;height:20px;background:var(--amarelo);border-radius:50%;display:none;align-items:center;justify-content:center}
+.svc-card .check{position:absolute;top:10px;right:10px;width:20px;height:20px;background:var(--amarelo);border-radius:50%;display:none;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--marrom)}
 .svc-card.active .check{display:flex}
-.check::after{content:'✓';font-size:11px;font-weight:700;color:var(--marrom)}
-
-/* RESULTADO */
+.selected-services{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:1.75rem;overflow:hidden}
+.selected-services-header{background:var(--marrom);padding:.875rem 1.25rem;display:flex;justify-content:space-between;align-items:center}
+.selected-services-header span{color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.total-badge{background:var(--amarelo);color:var(--marrom);font-size:13px;font-weight:700;padding:3px 12px;border-radius:20px}
+.sel-svc-row{display:flex;align-items:center;gap:12px;padding:.875rem 1.25rem;border-bottom:1px solid var(--border)}
+.sel-svc-row:last-child{border-bottom:none}
+.sel-svc-name{flex:1;font-size:13px;font-weight:600;color:var(--text)}
+.sel-svc-valor{display:flex;align-items:center;gap:6px;background:var(--bg);border:1.5px solid var(--amarelo);border-radius:7px;padding:5px 10px}
+.sel-svc-valor span{font-size:12px;color:var(--text-muted);font-weight:600}
+.sel-svc-valor input{width:90px;border:none;background:transparent;font-size:14px;font-weight:700;color:var(--text);font-family:'Barlow Condensed',sans-serif;outline:none}
+.sel-svc-remove{width:26px;height:26px;border-radius:50%;background:#FEE2E2;border:none;color:#B91C1C;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sel-svc-remove:hover{background:#FCA5A5}
+.parcelas-config h4{color:var(--amarelo);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.75rem}
+.parcela-row{display:flex;align-items:center;gap:8px;margin-bottom:.5rem}
+.parcela-row:last-child{margin-bottom:0}
+.parcela-label-input{flex:1;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:5px 8px;font-size:12px;color:#fff;font-family:'Barlow',sans-serif;outline:none}
+.parcela-label-input:focus{border-color:var(--amarelo)}
+.parcela-pct{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:7px;padding:5px 10px;width:80px;flex-shrink:0}
+.parcela-pct input{width:36px;border:none;background:transparent;font-size:14px;font-weight:700;color:#fff;font-family:'Barlow Condensed',sans-serif;outline:none;text-align:right}
+.parcela-pct span{font-size:13px;color:rgba(255,255,255,0.5);font-weight:600}
+.pct-total{font-size:12px;margin-top:.5rem;font-weight:600}
+.pct-total.ok{color:#6EE7B7}.pct-total.err{color:#FCA5A5}
+.btn-add-parcela{background:transparent;border:1px dashed rgba(255,255,255,0.2);color:rgba(255,255,255,0.5);border-radius:7px;padding:5px 10px;font-size:12px;cursor:pointer;width:100%;margin-top:.5rem;font-family:'Barlow',sans-serif}
+.btn-add-parcela:hover{border-color:var(--amarelo);color:var(--amarelo)}
+.btn-rem-parcela{width:22px;height:22px;border-radius:50%;background:rgba(255,0,0,0.15);border:none;color:#FCA5A5;font-size:12px;cursor:pointer;flex-shrink:0}
 .result-area{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
 .result-tabs{display:flex;border-bottom:1px solid var(--border)}
 .rtab{flex:1;padding:.875rem;font-size:13px;font-weight:600;text-align:center;cursor:pointer;border:none;background:transparent;color:var(--text-muted);letter-spacing:.03em;transition:all .15s;border-bottom:2px solid transparent}
 .rtab.active{color:var(--marrom);border-bottom-color:var(--amarelo)}
 .result-body{padding:1.5rem}
-
-/* FINANCEIRO */
 .fin-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1.25rem}
 .fin-metric{background:var(--bg);border-radius:8px;padding:1rem;text-align:center}
 .fin-metric .fm-label{font-size:11px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
-.fin-metric .fm-value{font-size:20px;font-weight:700;color:var(--text)}
-.fin-metric.green .fm-value{color:#1A6B3A}
-.fin-metric.amber .fm-value{color:#8B5E00}
+.fin-metric .fm-value{font-size:19px;font-weight:700;color:var(--text)}
 .impost-list{background:var(--bg);border-radius:8px;padding:1rem;margin-bottom:1rem}
 .impost-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
 .impost-row:last-child{border-bottom:none;font-weight:700;padding-top:8px}
 .pag-info{background:#FFFBEE;border:1px solid var(--amarelo);border-radius:8px;padding:1rem;font-size:13px}
 .pag-row{display:flex;justify-content:space-between;padding:4px 0}
 .pag-row strong{font-weight:600}
-
-/* WHATSAPP */
+.svc-breakdown{background:var(--bg);border-radius:8px;padding:1rem;margin-bottom:1rem}
+.svc-breakdown-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.svc-breakdown-row:last-child{border-bottom:none;font-weight:700;margin-top:4px;padding-top:8px}
 .wpp-box{background:var(--bg);border-radius:8px;padding:1.25rem;font-size:13px;line-height:1.8;white-space:pre-wrap;font-family:'Barlow',sans-serif;color:var(--text);max-height:420px;overflow-y:auto;border:1px solid var(--border)}
-.wpp-actions{display:flex;gap:10px;margin-top:1rem}
-
-/* DOCS */
+.wpp-actions{display:flex;gap:10px;margin-top:1rem;flex-wrap:wrap}
 .docs-list{display:flex;flex-direction:column;gap:6px;margin-bottom:1.25rem}
 .doc-item{display:flex;align-items:center;gap:10px;background:var(--bg);border-radius:8px;padding:.75rem 1rem;font-size:13px}
 .doc-item .doc-icon{width:24px;height:24px;background:var(--amarelo);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0}
 .entregavel-item{display:flex;align-items:flex-start;gap:10px;padding:.5rem 0;border-bottom:1px solid var(--border);font-size:13px}
 .entregavel-item:last-child{border-bottom:none}
 .bullet{width:6px;height:6px;background:var(--amarelo);border-radius:50%;margin-top:6px;flex-shrink:0}
-
-/* BOTÕES */
 .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;border:none;transition:all .15s;font-family:'Barlow',sans-serif}
-.btn-yellow{background:var(--amarelo);color:var(--marrom)}
-.btn-yellow:hover{background:var(--amarelo-dark)}
-.btn-outline{background:transparent;color:var(--marrom);border:1.5px solid var(--border)}
-.btn-outline:hover{background:var(--bg)}
-.btn-dark{background:var(--marrom);color:#fff}
-.btn-dark:hover{background:var(--marrom-mid)}
-.btn-green{background:#1A6B3A;color:#fff}
-.btn-green:hover{background:#145530}
-
-/* EMPTY STATE */
+.btn-yellow{background:var(--amarelo);color:var(--marrom)}.btn-yellow:hover{background:var(--amarelo-dark)}
+.btn-outline{background:transparent;color:var(--marrom);border:1.5px solid var(--border)}.btn-outline:hover{background:var(--bg)}
+.btn-green{background:#1A6B3A;color:#fff}.btn-green:hover{background:#145530}
 .empty-state{text-align:center;padding:3rem 1rem;color:var(--text-muted)}
 .empty-state .es-icon{font-size:40px;margin-bottom:1rem;opacity:.4}
 .empty-state p{font-size:14px}
-
-/* LOGO SVG */
 .logo-hex{width:36px;height:36px}
-
-/* SECTION DIVIDER */
 .sdiv{display:flex;align-items:center;gap:.75rem;margin:1.25rem 0 1rem}
 .sdiv span{font-size:12px;font-weight:700;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
 .sdiv::before,.sdiv::after{content:'';flex:1;height:1px;background:var(--border)}
-
-/* VALOR MANUAL */
-.valor-input-wrap{display:flex;align-items:center;gap:8px;background:var(--bg);border:2px solid var(--amarelo);border-radius:8px;padding:10px 14px}
-.valor-input-wrap span{font-size:16px;font-weight:700;color:var(--text-muted)}
-.valor-input-wrap input{flex:1;border:none;background:transparent;font-size:22px;font-weight:700;color:var(--text);font-family:'Barlow Condensed',sans-serif;outline:none}
-
-/* MOBILE */
+.svc-section-tag{display:inline-block;background:var(--amarelo);color:var(--marrom);font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;letter-spacing:.04em;margin-right:4px;margin-bottom:4px}
 @media(max-width:768px){
-  .app-body{grid-template-columns:1fr;grid-template-rows:auto 1fr}
+  .app-body{grid-template-columns:1fr}
   .sidebar{padding:1rem}
   .main{padding:1rem}
   .fin-metrics{grid-template-columns:repeat(3,1fr)}
   .services-grid{grid-template-columns:repeat(2,1fr)}
 }
-
-/* PRINT / PDF HIDDEN */
-.no-print{} 
 </style>
 </head>
 <body>
@@ -149,17 +125,12 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);min-
       <polygon points="40,4 74,22 74,58 40,76 6,58 6,22" fill="#E8C84A"/>
       <text x="40" y="52" text-anchor="middle" font-family="'Barlow Condensed',sans-serif" font-weight="800" font-size="34" fill="#2C2010">JS</text>
     </svg>
-    <div>
-      <span>J SOUZA</span>
-      <small>Engenharia e Topografia</small>
-    </div>
+    <div><span>J SOUZA</span><small>Engenharia e Topografia</small></div>
   </div>
   <div class="header-badge">Santarém — PA</div>
 </header>
 
 <div class="app-body">
-
-<!-- SIDEBAR -->
 <aside class="sidebar">
   <div class="sidebar-section">
     <h3>📋 Dados do cliente</h3>
@@ -190,23 +161,34 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);min-
       <textarea id="obs" placeholder="Deslocamento incluso, pendências, etc." oninput="update()"></textarea>
     </div>
   </div>
+
   <div class="sidebar-section">
-    <h3>💰 Valor do serviço</h3>
-    <div class="valor-input-wrap">
-      <span>R$</span>
-      <input type="number" id="valor-manual" placeholder="0,00" min="0" step="50" oninput="update()">
+    <h3>💰 Forma de pagamento</h3>
+    <div class="parcelas-config">
+      <h4>Parcelas (%)</h4>
+      <div id="parcelas-list"></div>
+      <div id="pct-total-display" class="pct-total ok">Total: 100%</div>
+      <button class="btn-add-parcela" onclick="addParcela()">+ adicionar parcela</button>
     </div>
-    <p style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:8px">Edite livremente. Preenchido automaticamente ao selecionar serviço.</p>
+    <p style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:.75rem">Valores em R$ calculados automaticamente sobre o total.</p>
   </div>
 </aside>
 
-<!-- MAIN -->
 <main class="main">
-
-  <div class="main-title">Selecione o serviço</div>
+  <div class="main-title">Selecione os serviços — pode marcar mais de um</div>
   <div class="services-grid" id="services-grid"></div>
 
-  <div class="result-area" id="result-area">
+  <div id="selected-area" style="display:none">
+    <div class="selected-services">
+      <div class="selected-services-header">
+        <span>Serviços selecionados</span>
+        <span class="total-badge" id="total-badge">R$ 0,00</span>
+      </div>
+      <div id="selected-list"></div>
+    </div>
+  </div>
+
+  <div class="result-area">
     <div class="result-tabs">
       <button class="rtab active" onclick="showTab('financeiro')">💰 Financeiro</button>
       <button class="rtab" onclick="showTab('whatsapp')">💬 WhatsApp</button>
@@ -215,91 +197,64 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);min-
     <div class="result-body" id="result-body">
       <div class="empty-state">
         <div class="es-icon">📐</div>
-        <p>Selecione um serviço para começar</p>
+        <p>Selecione um ou mais serviços para começar</p>
       </div>
     </div>
   </div>
-
 </main>
 </div>
 
 <script>
-const SERVICES = [
-  {
-    id:'geo-rural', name:'Georref. rural (SIGEF)', icon:'🌾', price:0, unit:'Valor por ha', note:'Define em campo',
-    docs:['RG/CPF (cópia)','CCIR atualizado','ITR','Matrícula atualizada (Certidão inteiro teor)','Nome dos confrontantes','Documentos de compra e venda','Comprovante de residência'],
-    entregaveis:['Demarcação e materialização com marcos nos vértices em campo','Processamento dos dados brutos obtidos em campo','Elaboração de peças técnicas (Planta, Memorial Descritivo e Relatórios)','ART — Anotação de Responsabilidade Técnica','Envio ao SIGEF — Sistema de Gestão Fundiária','Entrega do protocolo de envio'],
-    variavel:true
-  },
-  {
-    id:'geo-alienacao', name:'Georref. urbano — Alienação', icon:'🏠', price:2300, unit:'por imóvel', note:'Inclui TRT',
-    docs:['RG/CPF (cópia)','Comprovante de residência','Nome dos confrontantes','Documentos de compra e venda'],
-    entregaveis:['Levantamento planimétrico','Planta topográfica georreferenciada','Planta de confrontações (Declaração de confinantes)','Memorial descritivo','TRT — Termo de Responsabilidade Técnica'],
-    variavel:false
-  },
-  {
-    id:'geo-desdobro', name:'Georref. urbano — Desdobro/Unificação', icon:'✂️', price:1800, unit:'até 2 lotes', note:'+R$360 por lote adicional',
-    docs:['RG/CPF (cópia)','Comprovante de residência','Nome dos confrontantes','Matrícula atualizada (Certidão inteiro teor)','Espelho do IPTU'],
-    entregaveis:['Levantamento planimétrico','Planta topográfica georreferenciada','Planta de desdobro ou unificação (até 2 lotes)','Memorial descritivo','Requerimento com descritivo dos lotes','TRT — Termo de Responsabilidade Técnica'],
-    variavel:false
-  },
-  {
-    id:'geo-iptu', name:'Georref. urbano — IPTU', icon:'📍', price:1800, unit:'por imóvel', note:'Inclui DWG e PDF',
-    docs:['RG/CPF (cópia)','Comprovante de residência'],
-    entregaveis:['Levantamento planimétrico','Planta topográfica georreferenciada','Memorial descritivo','Arquivos digitais (DWG e PDF)','TRT — Termo de Responsabilidade Técnica'],
-    variavel:false
-  },
-  {
-    id:'iptu-reg', name:'Regularização IPTU (SEFIN)', icon:'🏛️', price:500, unit:'por lote', note:'Protocolo SEFIN-NCI',
-    docs:['RG/CPF (cópia)','Comprovante de residência','Nome da Propriedade','Comprovante de residência da Propriedade','Nome dos confrontantes','Documentos de compra e venda','Telefone para contato e e-mail'],
-    entregaveis:['Organização completa da documentação','Protocolo junto ao SEFIN-NCI','Acompanhamento do processo junto ao Núcleo de Cadastro Imobiliário'],
-    variavel:false
-  },
-  {
-    id:'car', name:'CAR — Cadastro Ambiental Rural', icon:'🌿', price:1984, unit:'por propriedade', note:'Inclui ART + protocolo SICAR-PA',
-    docs:['RG/CPF (cópia)','Declaração de Posse expedida pela Prefeitura Municipal','Contrato de Compra e Venda'],
-    entregaveis:['Levantamento dos vértices em campo','Processamento dos dados brutos','Elaboração de peças técnicas (Planta e Memorial Descritivo)','ART — Anotação de Responsabilidade Técnica','Entrega do protocolo de envio SICAR-PA'],
-    variavel:false
-  },
-  {
-    id:'car-pend', name:'Pendências CAR', icon:'🔄', price:800, unit:'por propriedade', note:'Acesso Central do Proprietário',
-    docs:['RG/CPF (cópia)','Declaração de Posse expedida pela Prefeitura','Contrato de Compra e Venda'],
-    entregaveis:['Acesso à Central do Proprietário/Possuidor','Identificação da pendência','Solicitação de retificação junto ao órgão','Acompanhamento das notificações do Órgão Ambiental','Identificação e correção de erros para evitar penalidade'],
-    variavel:false
-  },
-  {
-    id:'planialti', name:'Levantamento Planialtimétrico', icon:'📏', price:0, unit:'conforme área', note:'Alto nível de detalhamento',
-    docs:['RG/CPF (cópia)','Comprovante de residência'],
-    entregaveis:['Levantamento Planialtimétrico Cadastral (nível de detalhamento: Alto)','Desenho técnico com curvas de nível em prancha A1','Arquivo digital .DWG e .PDF'],
-    variavel:true
-  },
-  {
-    id:'ccir', name:'Regularização CCIR', icon:'📜', price:0, unit:'por propriedade', note:'Requer senha Gov.br',
-    docs:['RG/CPF (+ certidão de casamento se casado)','Comprovante de endereço','Matrícula atualizada','Senha Gov.br do titular'],
-    entregaveis:['Organização da documentação completa','Requerimento assinado pelo titular','Protocolo junto ao INCRA'],
-    variavel:true
-  },
-  {
-    id:'itr', name:'Regularização ITR', icon:'📋', price:0, unit:'por propriedade', note:'Requer senha Gov.br',
-    docs:['RG/CPF (+ certidão de casamento se casado)','Comprovante de endereço','Matrícula atualizada','Senha Gov.br do titular'],
-    entregaveis:['Organização da documentação completa','Lançamento/atualização no sistema Receita Federal','Protocolo e comprovante'],
-    variavel:true
-  },
+const SERVICES=[
+  {id:'geo-rural',name:'Georref. rural (SIGEF)',icon:'🌾',price:0,note:'Define em campo',
+   docs:['RG/CPF (cópia)','CCIR atualizado','ITR','Matrícula atualizada (Certidão inteiro teor)','Nome dos confrontantes','Documentos de compra e venda','Comprovante de residência'],
+   entregaveis:['Demarcação e materialização com marcos nos vértices em campo','Processamento dos dados brutos obtidos em campo','Elaboração de peças técnicas (Planta, Memorial Descritivo e Relatórios)','ART — Anotação de Responsabilidade Técnica','Envio ao SIGEF — Sistema de Gestão Fundiária','Entrega do protocolo de envio'],variavel:true},
+  {id:'geo-alienacao',name:'Georref. urbano — Alienação',icon:'🏠',price:2300,note:'Inclui TRT',
+   docs:['RG/CPF (cópia)','Comprovante de residência','Nome dos confrontantes','Documentos de compra e venda'],
+   entregaveis:['Levantamento planimétrico','Planta topográfica georreferenciada','Planta de confrontações (Declaração de confinantes)','Memorial descritivo','TRT — Termo de Responsabilidade Técnica'],variavel:false},
+  {id:'geo-desdobro',name:'Georref. urbano — Desdobro/Unificação',icon:'✂️',price:1800,note:'+R$360 por lote adicional',
+   docs:['RG/CPF (cópia)','Comprovante de residência','Nome dos confrontantes','Matrícula atualizada (Certidão inteiro teor)','Espelho do IPTU'],
+   entregaveis:['Levantamento planimétrico','Planta topográfica georreferenciada','Planta de desdobro ou unificação (até 2 lotes)','Memorial descritivo','Requerimento com descritivo dos lotes','TRT — Termo de Responsabilidade Técnica'],variavel:false},
+  {id:'geo-iptu',name:'Georref. urbano — IPTU',icon:'📍',price:1800,note:'Inclui DWG e PDF',
+   docs:['RG/CPF (cópia)','Comprovante de residência'],
+   entregaveis:['Levantamento planimétrico','Planta topográfica georreferenciada','Memorial descritivo','Arquivos digitais (DWG e PDF)','TRT — Termo de Responsabilidade Técnica'],variavel:false},
+  {id:'iptu-reg',name:'Regularização IPTU (SEFIN)',icon:'🏛️',price:500,note:'Protocolo SEFIN-NCI',
+   docs:['RG/CPF (cópia)','Comprovante de residência','Nome da Propriedade','Comprovante de residência da Propriedade','Nome dos confrontantes','Documentos de compra e venda','Telefone para contato e e-mail'],
+   entregaveis:['Organização completa da documentação','Protocolo junto ao SEFIN-NCI','Acompanhamento do processo junto ao Núcleo de Cadastro Imobiliário'],variavel:false},
+  {id:'car',name:'CAR — Cadastro Ambiental Rural',icon:'🌿',price:1984,note:'Inclui ART + protocolo SICAR-PA',
+   docs:['RG/CPF (cópia)','Declaração de Posse expedida pela Prefeitura Municipal','Contrato de Compra e Venda'],
+   entregaveis:['Levantamento dos vértices em campo','Processamento dos dados brutos','Elaboração de peças técnicas (Planta e Memorial Descritivo)','ART — Anotação de Responsabilidade Técnica','Entrega do protocolo de envio SICAR-PA'],variavel:false},
+  {id:'car-pend',name:'Pendências CAR',icon:'🔄',price:800,note:'Acesso Central do Proprietário',
+   docs:['RG/CPF (cópia)','Declaração de Posse expedida pela Prefeitura','Contrato de Compra e Venda'],
+   entregaveis:['Acesso à Central do Proprietário/Possuidor','Identificação da pendência','Solicitação de retificação junto ao órgão','Acompanhamento das notificações do Órgão Ambiental','Identificação e correção de erros para evitar penalidade'],variavel:false},
+  {id:'planialti',name:'Levantamento Planialtimétrico',icon:'📏',price:0,note:'Alto nível de detalhamento',
+   docs:['RG/CPF (cópia)','Comprovante de residência'],
+   entregaveis:['Levantamento Planialtimétrico Cadastral (nível de detalhamento: Alto)','Desenho técnico com curvas de nível em prancha A1','Arquivo digital .DWG e .PDF'],variavel:true},
+  {id:'ccir',name:'Regularização CCIR',icon:'📜',price:0,note:'Requer senha Gov.br',
+   docs:['RG/CPF (+ certidão de casamento se casado)','Comprovante de endereço','Matrícula atualizada','Senha Gov.br do titular'],
+   entregaveis:['Organização da documentação completa','Requerimento assinado pelo titular','Protocolo junto ao INCRA'],variavel:true},
+  {id:'itr',name:'Regularização ITR',icon:'📋',price:0,note:'Requer senha Gov.br',
+   docs:['RG/CPF (+ certidão de casamento se casado)','Comprovante de endereço','Matrícula atualizada','Senha Gov.br do titular'],
+   entregaveis:['Organização da documentação completa','Lançamento/atualização no sistema Receita Federal','Protocolo e comprovante'],variavel:true},
 ];
 
-const ISS=0.05, PIS=0.0065, COF=0.03, IRPJ=0.048, CSLL=0.0288;
-const TOTAL_TAX = ISS+PIS+COF+IRPJ+CSLL;
-
-let selected = null;
-let currentTab = 'financeiro';
+const ISS=0.05,PIS=0.0065,COF=0.03,IRPJ=0.048,CSLL=0.0288,TOTAL_TAX=ISS+PIS+COF+IRPJ+CSLL;
+let selectedServices=[];
+let currentTab='financeiro';
+let parcelas=[
+  {label:'1ª parcela — início dos serviços',pct:50},
+  {label:'2ª parcela — entrega das peças',pct:50}
+];
 
 function fmt(v){return 'R$ '+Number(v).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}
-function getValor(){return parseFloat(document.getElementById('valor-manual').value)||0}
+function getTotalValor(){return selectedServices.reduce((s,x)=>s+(parseFloat(x.valor)||0),0)}
+function pctOk(){return Math.abs(parcelas.reduce((s,p)=>s+(parseFloat(p.pct)||0),0)-100)<0.01}
 
 function renderServices(){
-  document.getElementById('services-grid').innerHTML = SERVICES.map(s=>`
-    <div class="svc-card ${selected===s.id?'active':''}" onclick="selectSvc('${s.id}')">
-      <div class="check"></div>
+  const ids=selectedServices.map(x=>x.id);
+  document.getElementById('services-grid').innerHTML=SERVICES.map(s=>`
+    <div class="svc-card ${ids.includes(s.id)?'active':''}" onclick="toggleSvc('${s.id}')">
+      <div class="check">✓</div>
       <div class="svc-icon">${s.icon}</div>
       <div class="svc-name">${s.name}</div>
       <div class="svc-price">${s.variavel?'Valor variável':fmt(s.price)}</div>
@@ -308,309 +263,271 @@ function renderServices(){
   `).join('');
 }
 
-function selectSvc(id){
-  selected = id;
-  const s = SERVICES.find(x=>x.id===id);
-  if(!s.variavel) document.getElementById('valor-manual').value = s.price;
-  else document.getElementById('valor-manual').value = '';
-  renderServices();
+function toggleSvc(id){
+  const idx=selectedServices.findIndex(x=>x.id===id);
+  if(idx>=0){selectedServices.splice(idx,1);}
+  else{const s=SERVICES.find(x=>x.id===id);selectedServices.push({id,valor:s.variavel?'':s.price});}
+  renderServices();renderSelectedList();update();
+}
+
+function renderSelectedList(){
+  const area=document.getElementById('selected-area');
+  const list=document.getElementById('selected-list');
+  if(selectedServices.length===0){area.style.display='none';return;}
+  area.style.display='block';
+  list.innerHTML=selectedServices.map((x,i)=>{
+    const s=SERVICES.find(sv=>sv.id===x.id);
+    return `<div class="sel-svc-row">
+      <span class="sel-svc-name">${s.icon} ${s.name}</span>
+      <div class="sel-svc-valor"><span>R$</span>
+        <input type="number" value="${x.valor}" placeholder="0" min="0" step="50" oninput="updateSvcValor(${i},this.value)">
+      </div>
+      <button class="sel-svc-remove" onclick="removeSvc(${i})">✕</button>
+    </div>`;
+  }).join('');
+  document.getElementById('total-badge').textContent=fmt(getTotalValor());
+}
+
+function updateSvcValor(i,val){
+  selectedServices[i].valor=val;
+  document.getElementById('total-badge').textContent=fmt(getTotalValor());
   update();
 }
 
-function showTab(t){
-  currentTab = t;
-  document.querySelectorAll('.rtab').forEach((el,i)=>{
-    el.classList.toggle('active',['financeiro','whatsapp','documentos'][i]===t);
-  });
-  renderResult();
+function removeSvc(i){
+  selectedServices.splice(i,1);renderServices();renderSelectedList();update();
 }
 
-function update(){renderResult()}
+function renderParcelas(){
+  document.getElementById('parcelas-list').innerHTML=parcelas.map((p,i)=>`
+    <div class="parcela-row">
+      <input class="parcela-label-input" value="${p.label}" oninput="parcelas[${i}].label=this.value;update()">
+      <div class="parcela-pct">
+        <input type="number" value="${p.pct}" min="0" max="100" step="5" oninput="parcelas[${i}].pct=parseFloat(this.value)||0;checkPctTotal()">
+        <span>%</span>
+      </div>
+      ${parcelas.length>1?`<button class="btn-rem-parcela" onclick="removeParcela(${i})">✕</button>`:''}
+    </div>
+  `).join('');
+  checkPctTotal();
+}
+
+function checkPctTotal(){
+  const total=parcelas.reduce((s,p)=>s+(parseFloat(p.pct)||0),0);
+  const el=document.getElementById('pct-total-display');
+  el.textContent=`Total: ${Math.round(total*10)/10}%`;
+  el.className='pct-total '+(Math.abs(total-100)<0.01?'ok':'err');
+  update();
+}
+
+function addParcela(){parcelas.push({label:`${parcelas.length+1}ª parcela`,pct:0});renderParcelas();}
+function removeParcela(i){parcelas.splice(i,1);renderParcelas();update();}
+
+function showTab(t){
+  currentTab=t;
+  document.querySelectorAll('.rtab').forEach((el,i)=>{el.classList.toggle('active',['financeiro','whatsapp','documentos'][i]===t);});
+  renderResult();
+}
+function update(){renderResult();}
 
 function renderResult(){
-  if(!selected){return}
-  const s = SERVICES.find(x=>x.id===selected);
-  const v = getValor();
-  const tax = v * TOTAL_TAX;
-  const liq = v - tax;
-  const p1 = v/2, p2 = v/2;
-  const nome = document.getElementById('cli-nome').value||'[NOME DO CLIENTE]';
-  const tel = document.getElementById('cli-tel').value||'';
-  const local = document.getElementById('cli-local').value||'[LOCALIDADE]';
-  const area = document.getElementById('cli-area').value||'';
-  const prazo = document.getElementById('prazo').value;
-  const resp = document.getElementById('resp').value;
-  const obs = document.getElementById('obs').value;
-
-  let html = '';
+  if(selectedServices.length===0){
+    document.getElementById('result-body').innerHTML='<div class="empty-state"><div class="es-icon">📐</div><p>Selecione um ou mais serviços para começar</p></div>';
+    return;
+  }
+  const v=getTotalValor(),tax=v*TOTAL_TAX,liq=v-tax;
+  const ok=pctOk();
+  const nome=document.getElementById('cli-nome').value||'[NOME DO CLIENTE]';
+  const tel=document.getElementById('cli-tel').value||'';
+  const local=document.getElementById('cli-local').value||'[LOCALIDADE]';
+  const area=document.getElementById('cli-area').value||'';
+  const prazo=document.getElementById('prazo').value;
+  const resp=document.getElementById('resp').value;
+  const obs=document.getElementById('obs').value;
+  const svcsObj=selectedServices.map(x=>({svc:SERVICES.find(sv=>sv.id===x.id),valor:parseFloat(x.valor)||0}));
+  let html='';
 
   if(currentTab==='financeiro'){
-    html = `
-      <div class="fin-metrics">
-        <div class="fin-metric"><div class="fm-label">Valor cobrado</div><div class="fm-value">${v>0?fmt(v):'—'}</div></div>
-        <div class="fin-metric amber"><div class="fm-label">Impostos (~${Math.round(TOTAL_TAX*100)}%)</div><div class="fm-value" style="color:#8B5E00">${v>0?fmt(tax):'—'}</div></div>
-        <div class="fin-metric green"><div class="fm-label">Líquido empresa</div><div class="fm-value" style="color:#1A6B3A">${v>0?fmt(liq):'—'}</div></div>
-      </div>
-      <div class="impost-list">
-        <div class="impost-row"><span style="color:var(--text-muted)">ISS — Santarém PA (5%)</span><span>${v>0?fmt(v*ISS):'—'}</span></div>
-        <div class="impost-row"><span style="color:var(--text-muted)">PIS + COFINS (3,65%)</span><span>${v>0?fmt(v*(PIS+COF)):'—'}</span></div>
-        <div class="impost-row"><span style="color:var(--text-muted)">IRPJ + CSLL — LP (7,68%)</span><span>${v>0?fmt(v*(IRPJ+CSLL)):'—'}</span></div>
-        <div class="impost-row"><span>Total impostos</span><span>${v>0?fmt(tax):'—'}</span></div>
-      </div>
-      <div class="pag-info">
-        <div style="font-size:12px;font-weight:700;color:var(--marrom-mid);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.75rem">Forma de pagamento</div>
-        <div class="pag-row"><span>1ª parcela — início dos serviços:</span><strong>${v>0?fmt(p1):'—'}</strong></div>
-        <div class="pag-row"><span>2ª parcela — entrega das peças:</span><strong>${v>0?fmt(p2):'—'}</strong></div>
-      </div>
-      <div style="display:flex;gap:10px;margin-top:1.25rem;flex-wrap:wrap">
-        <button class="btn btn-yellow" onclick="gerarPDF()">📄 Gerar PDF formal</button>
-        <button class="btn btn-outline" onclick="showTab('whatsapp')">💬 Ver texto WhatsApp</button>
-      </div>
-    `;
-  } else if(currentTab==='whatsapp'){
-    const docs = s.docs.map(d=>`  ✔ ${d}`).join('\n');
-    const ents = s.entregaveis.map(e=>`  • ${e}`).join('\n');
-    const txt = `Olá, ${nome}! Tudo bem? 😊\n\nSegue o orçamento para o serviço solicitado:\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━\n🏢 *JSouza Engenharia e Topografia*\n📍 Santarém — PA\n━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n*SERVIÇO:* ${s.name}\n*IMÓVEL/LOCAL:* ${local}${area?'\n*ÁREA:* '+area:''}\n\n*O QUE ESTÁ INCLUSO:*\n${ents}\n\n*DOCUMENTOS NECESSÁRIOS:*\n${docs}\n\n*VALOR:* ${v>0?fmt(v):'A definir conforme levantamento em campo'}\n*PRAZO DE ENTREGA:* ${prazo}\n\n*FORMA DE PAGAMENTO:*\n  • 50% no início dos serviços: ${v>0?fmt(p1):'—'}\n  • 50% na entrega das peças técnicas: ${v>0?fmt(p2):'—'}${obs?'\n\n*OBS.:* '+obs:''}\n\n*Responsável técnico:* ${resp}\n\nQualquer dúvida, estou à disposição! 🤝\n_JSouza Engenharia e Topografia_`;
-    html = `
-      <div class="wpp-box" id="wpp-text">${escapeHtml(txt)}</div>
-      <div class="wpp-actions">
-        <button class="btn btn-green" onclick="copyWpp()">📋 Copiar texto</button>
-        <button class="btn btn-yellow" onclick="gerarPDF()">📄 Gerar PDF</button>
-      </div>
-    `;
-  } else if(currentTab==='documentos'){
-    html = `
-      <div style="font-size:12px;font-weight:700;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.75rem">Documentos necessários do cliente</div>
-      <div class="docs-list">
-        ${s.docs.map(d=>`<div class="doc-item"><div class="doc-icon">📄</div><span>${d}</span></div>`).join('')}
-      </div>
-      <div class="sdiv"><span>Entregáveis JSouza</span></div>
-      <div>
-        ${s.entregaveis.map(e=>`<div class="entregavel-item"><div class="bullet"></div><span>${e}</span></div>`).join('')}
-      </div>
-    `;
+    const bdRows=selectedServices.length>1?`<div class="svc-breakdown">
+      ${svcsObj.map(x=>`<div class="svc-breakdown-row"><span>${x.svc.icon} ${x.svc.name}</span><span>${x.valor>0?fmt(x.valor):'A definir'}</span></div>`).join('')}
+      <div class="svc-breakdown-row"><span><strong>Total</strong></span><span><strong>${v>0?fmt(v):'—'}</strong></span></div>
+    </div>`:'';
+    const pagRows=ok?parcelas.map(p=>`<div class="pag-row"><span>${p.label} (${p.pct}%):</span><strong>${v>0?fmt(v*(p.pct/100)):'—'}</strong></div>`).join('')
+      :`<div style="color:#B45309;font-size:13px">⚠️ Ajuste os percentuais para totalizar 100%</div>`;
+    html=`<div class="fin-metrics">
+      <div class="fin-metric"><div class="fm-label">Valor total</div><div class="fm-value">${v>0?fmt(v):'—'}</div></div>
+      <div class="fin-metric"><div class="fm-label">Impostos (~${Math.round(TOTAL_TAX*100)}%)</div><div class="fm-value" style="color:#8B5E00">${v>0?fmt(tax):'—'}</div></div>
+      <div class="fin-metric"><div class="fm-label">Líquido empresa</div><div class="fm-value" style="color:#1A6B3A">${v>0?fmt(liq):'—'}</div></div>
+    </div>
+    ${bdRows}
+    <div class="impost-list">
+      <div class="impost-row"><span style="color:var(--text-muted)">ISS — Santarém PA (5%)</span><span>${v>0?fmt(v*ISS):'—'}</span></div>
+      <div class="impost-row"><span style="color:var(--text-muted)">PIS + COFINS (3,65%)</span><span>${v>0?fmt(v*(PIS+COF)):'—'}</span></div>
+      <div class="impost-row"><span style="color:var(--text-muted)">IRPJ + CSLL — LP (7,68%)</span><span>${v>0?fmt(v*(IRPJ+CSLL)):'—'}</span></div>
+      <div class="impost-row"><span>Total impostos</span><span>${v>0?fmt(tax):'—'}</span></div>
+    </div>
+    <div class="pag-info">
+      <div style="font-size:12px;font-weight:700;color:var(--marrom-mid);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.75rem">Forma de pagamento</div>
+      ${pagRows}
+    </div>
+    <div style="display:flex;gap:10px;margin-top:1.25rem;flex-wrap:wrap">
+      <button class="btn btn-yellow" onclick="gerarPDF()">📄 Gerar PDF formal</button>
+      <button class="btn btn-outline" onclick="showTab('whatsapp')">💬 Ver texto WhatsApp</button>
+    </div>`;
+
+  }else if(currentTab==='whatsapp'){
+    const svcsTexto=svcsObj.map(x=>`  • ${x.svc.name}`).join('\n');
+    const entsTexto=[...new Set(svcsObj.flatMap(x=>x.svc.entregaveis))].map(e=>`  • ${e}`).join('\n');
+    const docsTexto=[...new Set(svcsObj.flatMap(x=>x.svc.docs))].map(d=>`  ✔ ${d}`).join('\n');
+    const valoresTexto=selectedServices.length>1
+      ?'\n*VALORES POR SERVIÇO:*\n'+svcsObj.map(x=>`  • ${x.svc.name}: ${x.valor>0?fmt(x.valor):'A definir'}`).join('\n')+`\n  ━━━\n  *Total: ${v>0?fmt(v):'A definir'}*`
+      :`\n*VALOR:* ${v>0?fmt(v):'A definir conforme levantamento em campo'}`;
+    const pagTexto=ok
+      ?parcelas.map(p=>`  • ${p.label} (${p.pct}%): ${v>0?fmt(v*(p.pct/100)):'—'}`).join('\n')
+      :'  A combinar';
+    const txt=`Olá, ${nome}! Tudo bem? 😊\n\nSegue o orçamento para o(s) serviço(s) solicitado(s):\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━\n🏢 *JSouza Engenharia e Topografia*\n📍 Santarém — PA\n━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n*SERVIÇO(S):*\n${svcsTexto}\n\n*IMÓVEL/LOCAL:* ${local}${area?'\n*ÁREA:* '+area:''}${valoresTexto}\n\n*O QUE ESTÁ INCLUSO:*\n${entsTexto}\n\n*DOCUMENTOS NECESSÁRIOS:*\n${docsTexto}\n\n*PRAZO DE ENTREGA:* ${prazo}\n\n*FORMA DE PAGAMENTO:*\n${pagTexto}${obs?'\n\n*OBS.:* '+obs:''}\n\n*Responsável técnico:* ${resp}\n\nQualquer dúvida, estou à disposição! 🤝\n_JSouza Engenharia e Topografia_`;
+    html=`<div class="wpp-box" id="wpp-text">${escapeHtml(txt)}</div>
+    <div class="wpp-actions">
+      <button class="btn btn-green" onclick="copyWpp()">📋 Copiar texto</button>
+      <button class="btn btn-yellow" onclick="gerarPDF()">📄 Gerar PDF</button>
+    </div>`;
+
+  }else if(currentTab==='documentos'){
+    const allDocs=[...new Set(svcsObj.flatMap(x=>x.svc.docs))];
+    const allEnts=[...new Set(svcsObj.flatMap(x=>x.svc.entregaveis))];
+    html=`<div style="margin-bottom:.75rem">${svcsObj.map(x=>`<span class="svc-section-tag">${x.svc.icon} ${x.svc.name}</span>`).join('')}</div>
+    <div style="font-size:12px;font-weight:700;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.75rem">Documentos necessários do cliente</div>
+    <div class="docs-list">${allDocs.map(d=>`<div class="doc-item"><div class="doc-icon">📄</div><span>${d}</span></div>`).join('')}</div>
+    <div class="sdiv"><span>Entregáveis JSouza</span></div>
+    <div>${allEnts.map(e=>`<div class="entregavel-item"><div class="bullet"></div><span>${e}</span></div>`).join('')}</div>`;
   }
 
-  document.getElementById('result-body').innerHTML = html;
+  document.getElementById('result-body').innerHTML=html;
 }
 
 function escapeHtml(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 
 function copyWpp(){
-  const el = document.getElementById('wpp-text');
-  navigator.clipboard.writeText(el.innerText).then(()=>{
-    const btn = event.target;
-    btn.textContent='✅ Copiado!';
+  navigator.clipboard.writeText(document.getElementById('wpp-text').innerText).then(()=>{
+    const btn=event.target;btn.textContent='✅ Copiado!';
     setTimeout(()=>btn.textContent='📋 Copiar texto',2500);
   });
 }
 
 function gerarPDF(){
-  if(!selected){alert('Selecione um serviço primeiro.');return}
-  const {jsPDF} = window.jspdf;
-  const doc = new jsPDF({unit:'mm',format:'a4'});
-  const s = SERVICES.find(x=>x.id===selected);
-  const v = getValor();
-  const tax = v * TOTAL_TAX;
-  const liq = v - tax;
-  const p1 = v/2, p2 = v/2;
-  const nome = document.getElementById('cli-nome').value||'[NOME DO CLIENTE]';
-  const tel = document.getElementById('cli-tel').value||'—';
-  const email = document.getElementById('cli-email').value||'—';
-  const local = document.getElementById('cli-local').value||'[LOCALIDADE]';
-  const area = document.getElementById('cli-area').value||'—';
-  const prazo = document.getElementById('prazo').value;
-  const resp = document.getElementById('resp').value;
-  const obs = document.getElementById('obs').value;
-  const hoje = new Date().toLocaleDateString('pt-BR');
+  if(selectedServices.length===0){alert('Selecione ao menos um serviço.');return;}
+  const {jsPDF}=window.jspdf;
+  const doc=new jsPDF({unit:'mm',format:'a4'});
+  const v=getTotalValor(),tax=v*TOTAL_TAX;
+  const ok=pctOk();
+  const nome=document.getElementById('cli-nome').value||'[NOME DO CLIENTE]';
+  const tel=document.getElementById('cli-tel').value||'—';
+  const email=document.getElementById('cli-email').value||'—';
+  const local=document.getElementById('cli-local').value||'[LOCALIDADE]';
+  const area=document.getElementById('cli-area').value||'—';
+  const prazo=document.getElementById('prazo').value;
+  const resp=document.getElementById('resp').value;
+  const obs=document.getElementById('obs').value;
+  const hoje=new Date().toLocaleDateString('pt-BR');
+  const svcsObj=selectedServices.map(x=>({svc:SERVICES.find(sv=>sv.id===x.id),valor:parseFloat(x.valor)||0}));
+  const W=210,M=18;let y=0;
 
-  const W = 210, M = 18;
-  let y = 0;
-
-  // HEADER background
-  doc.setFillColor(44,32,16);
-  doc.rect(0,0,W,42,'F');
-
-  // Hexagon logo (simplified)
+  doc.setFillColor(44,32,16);doc.rect(0,0,W,42,'F');
   doc.setFillColor(232,200,74);
-  const hx=M+3, hy=8, hw=20;
-  doc.setLineWidth(0);
-  // Draw hexagon approximation as polygon
-  const pts = [];
-  for(let i=0;i<6;i++){
-    const ang = Math.PI/180*(60*i-30);
-    pts.push([hx+hw/2+hw/2*Math.cos(ang), hy+hw/2+hw/2*Math.sin(ang)]);
-  }
-  doc.setFillColor(232,200,74);
-  doc.moveTo(pts[0][0],pts[0][1]);
-  for(let i=1;i<6;i++) doc.lineTo(pts[i][0],pts[i][1]);
-  // Actually jspdf doesn't support polygon fill natively; use a rect approximation
-  doc.setFillColor(232,200,74);
+  const hx=M+3,hy=8,hw=20;
   doc.roundedRect(hx,hy,hw,hw,2,2,'F');
-  doc.setTextColor(44,32,16);
-  doc.setFont('helvetica','bold');
-  doc.setFontSize(11);
-  doc.text('JS',hx+6,hy+13);
+  doc.setTextColor(44,32,16);doc.setFont('helvetica','bold');doc.setFontSize(11);doc.text('JS',hx+6,hy+13);
+  doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.setFontSize(16);doc.text('J SOUZA',hx+hw+6,hy+8);
+  doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(232,200,74);doc.text('ENGENHARIA E TOPOGRAFIA',hx+hw+6,hy+14);
+  doc.setTextColor(200,200,200);doc.text('Santarém — PA  |  CFT-PA',hx+hw+6,hy+19.5);
+  doc.setFillColor(232,200,74);doc.roundedRect(W-M-40,hy,40,15,2,2,'F');
+  doc.setTextColor(44,32,16);doc.setFont('helvetica','bold');doc.setFontSize(9);doc.text('PROPOSTA',W-M-20,hy+6.5,{align:'center'});
+  doc.setFont('helvetica','normal');doc.setFontSize(8);doc.text(`Nº ${hoje.replace(/\//g,'')}`,W-M-20,hy+11.5,{align:'center'});
 
-  // Company name
-  doc.setTextColor(255,255,255);
-  doc.setFont('helvetica','bold');
-  doc.setFontSize(16);
-  doc.text('J SOUZA',hx+hw+6,hy+8);
-  doc.setFont('helvetica','normal');
-  doc.setFontSize(9);
-  doc.setTextColor(232,200,74);
-  doc.text('ENGENHARIA E TOPOGRAFIA',hx+hw+6,hy+14);
-  doc.setTextColor(200,200,200);
-  doc.text('Santarém — PA  |  CFT-PA',hx+hw+6,hy+19.5);
+  y=50;
+  doc.setTextColor(100,90,70);doc.setFont('helvetica','normal');doc.setFontSize(9);
+  doc.text(`Data: ${hoje}     Responsável: ${resp}`,M,y);y+=10;
 
-  // PROPOSTA label
-  doc.setFillColor(232,200,74);
-  doc.roundedRect(W-M-40,hy,40,15,2,2,'F');
-  doc.setTextColor(44,32,16);
-  doc.setFont('helvetica','bold');
-  doc.setFontSize(9);
-  doc.text('PROPOSTA',W-M-20,hy+6.5,{align:'center'});
-  doc.setFont('helvetica','normal');
-  doc.setFontSize(8);
-  doc.text(`Nº ${hoje.replace(/\//g,'')}`,W-M-20,hy+11.5,{align:'center'});
-
-  y = 50;
-
-  // Data e resp
-  doc.setTextColor(100,90,70);
-  doc.setFont('helvetica','normal');
-  doc.setFontSize(9);
-  doc.text(`Data: ${hoje}     Responsável: ${resp}`,M,y);
-  y += 10;
-
-  // DADOS DO CLIENTE
-  doc.setFillColor(247,245,240);
-  doc.roundedRect(M,y-4,W-2*M,28,2,2,'F');
-  doc.setTextColor(44,32,16);
-  doc.setFont('helvetica','bold');
-  doc.setFontSize(9);
-  doc.text('DADOS DO CLIENTE',M+5,y+2);
-  doc.setFont('helvetica','normal');
-  doc.setFontSize(10);
+  doc.setFillColor(247,245,240);doc.roundedRect(M,y-4,W-2*M,28,2,2,'F');
+  doc.setTextColor(44,32,16);doc.setFont('helvetica','bold');doc.setFontSize(9);doc.text('DADOS DO CLIENTE',M+5,y+2);
+  doc.setFont('helvetica','normal');doc.setFontSize(10);
   doc.text(`Nome: ${nome}`,M+5,y+9);
   doc.text(`Telefone: ${tel}     E-mail: ${email}`,M+5,y+15);
   doc.text(`Imóvel/Local: ${local}     Área: ${area}`,M+5,y+21);
-  y += 36;
+  y+=36;
 
-  // SERVIÇO
-  doc.setFillColor(232,200,74);
-  doc.roundedRect(M,y-4,W-2*M,10,2,2,'F');
-  doc.setTextColor(44,32,16);
-  doc.setFont('helvetica','bold');
-  doc.setFontSize(10);
-  doc.text(`SERVIÇO: ${s.name.toUpperCase()}`,M+5,y+3);
-  y += 14;
+  doc.setFillColor(232,200,74);doc.roundedRect(M,y-4,W-2*M,10,2,2,'F');
+  doc.setTextColor(44,32,16);doc.setFont('helvetica','bold');doc.setFontSize(10);
+  doc.text(svcsObj.length===1?`SERVIÇO: ${svcsObj[0].svc.name.toUpperCase()}`:'SERVIÇOS CONTRATADOS',M+5,y+3);y+=14;
 
-  // Entregáveis
-  doc.setTextColor(44,32,16);
-  doc.setFont('helvetica','bold');
-  doc.setFontSize(9);
-  doc.text('ENTREGÁVEIS INCLUSOS:',M,y);
-  y += 6;
-  doc.setFont('helvetica','normal');
-  doc.setFontSize(9);
-  s.entregaveis.forEach(e=>{
-    doc.setFillColor(232,200,74);
-    doc.circle(M+2,y-1.5,1.2,'F');
-    doc.setTextColor(60,50,30);
-    const lines = doc.splitTextToSize(e,W-2*M-10);
-    doc.text(lines,M+6,y);
-    y += lines.length*5+1;
-  });
-  y += 4;
-
-  // Documentos
-  doc.setTextColor(44,32,16);
-  doc.setFont('helvetica','bold');
-  doc.setFontSize(9);
-  doc.text('DOCUMENTOS NECESSÁRIOS (entregar ao início):',M,y);
-  y += 6;
-  doc.setFont('helvetica','normal');
-  doc.setFontSize(9);
-  s.docs.forEach(d=>{
-    doc.setTextColor(44,32,16);
-    doc.text('✔ '+d,M+4,y);
-    y += 5.5;
-  });
-  y += 5;
-
-  // FINANCEIRO
-  doc.setFillColor(44,32,16);
-  doc.roundedRect(M,y-4,W-2*M,10,2,2,'F');
-  doc.setTextColor(255,255,255);
-  doc.setFont('helvetica','bold');
-  doc.setFontSize(10);
-  doc.text('VALORES E CONDIÇÕES DE PAGAMENTO',M+5,y+3);
-  y += 14;
-
-  const colW = (W-2*M)/3;
-  ['Valor total','Prazo de entrega','Validade'].forEach((label,i)=>{
-    const vals = [v>0?fmt(v):'A definir', prazo, '30 dias'];
-    doc.setFillColor(247,245,240);
-    doc.roundedRect(M+i*colW,y-4,colW-4,18,2,2,'F');
-    doc.setTextColor(100,90,70);
-    doc.setFont('helvetica','normal');
-    doc.setFontSize(8);
-    doc.text(label,M+i*colW+5,y+1);
-    doc.setTextColor(44,32,16);
+  if(svcsObj.length>1){
+    doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(60,50,30);
+    svcsObj.forEach(x=>{
+      doc.text(`• ${x.svc.name}`,M+4,y);
+      doc.text(x.valor>0?fmt(x.valor):'A definir',W-M-4,y,{align:'right'});y+=5.5;
+    });
     doc.setFont('helvetica','bold');
-    doc.setFontSize(10);
-    doc.text(vals[i],M+i*colW+5,y+10);
-  });
-  y += 26;
-
-  // Parcelas
-  doc.setFont('helvetica','normal');
-  doc.setFontSize(9);
-  doc.setTextColor(60,50,30);
-  doc.text('• 50% no início dos serviços (assinatura desta proposta): '+( v>0?fmt(p1):'A definir'),M,y);
-  y += 6;
-  doc.text('• 50% na entrega de todas as peças técnicas: '+(v>0?fmt(p2):'A definir'),M,y);
-  y += 10;
-
-  if(obs){
-    doc.setFont('helvetica','bolditalic');
-    doc.setFontSize(9);
-    doc.setTextColor(100,80,40);
-    const lines = doc.splitTextToSize('Obs.: '+obs, W-2*M);
-    doc.text(lines,M,y);
-    y += lines.length*5+6;
+    doc.text('Total',M+4,y);doc.text(v>0?fmt(v):'A definir',W-M-4,y,{align:'right'});y+=10;
   }
 
-  // ASSINATURA
-  if(y > 250) {doc.addPage(); y=20;}
+  const allEnts=[...new Set(svcsObj.flatMap(x=>x.svc.entregaveis))];
+  doc.setTextColor(44,32,16);doc.setFont('helvetica','bold');doc.setFontSize(9);doc.text('ENTREGÁVEIS INCLUSOS:',M,y);y+=6;
+  doc.setFont('helvetica','normal');doc.setFontSize(9);
+  allEnts.forEach(e=>{
+    doc.setFillColor(232,200,74);doc.circle(M+2,y-1.5,1.2,'F');
+    doc.setTextColor(60,50,30);const lines=doc.splitTextToSize(e,W-2*M-10);
+    doc.text(lines,M+6,y);y+=lines.length*5+1;
+  });y+=4;
+
+  const allDocs=[...new Set(svcsObj.flatMap(x=>x.svc.docs))];
+  doc.setTextColor(44,32,16);doc.setFont('helvetica','bold');doc.setFontSize(9);doc.text('DOCUMENTOS NECESSÁRIOS (entregar ao início):',M,y);y+=6;
+  doc.setFont('helvetica','normal');doc.setFontSize(9);
+  allDocs.forEach(d=>{doc.setTextColor(44,32,16);doc.text('✔ '+d,M+4,y);y+=5.5;});y+=5;
+
+  if(y>230){doc.addPage();y=20;}
+  doc.setFillColor(44,32,16);doc.roundedRect(M,y-4,W-2*M,10,2,2,'F');
+  doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.setFontSize(10);
+  doc.text('VALORES E CONDIÇÕES DE PAGAMENTO',M+5,y+3);y+=14;
+
+  const colW=(W-2*M)/3;
+  ['Valor total','Prazo de entrega','Validade'].forEach((label,i)=>{
+    const vals=[v>0?fmt(v):'A definir',prazo,'30 dias'];
+    doc.setFillColor(247,245,240);doc.roundedRect(M+i*colW,y-4,colW-4,18,2,2,'F');
+    doc.setTextColor(100,90,70);doc.setFont('helvetica','normal');doc.setFontSize(8);doc.text(label,M+i*colW+5,y+1);
+    doc.setTextColor(44,32,16);doc.setFont('helvetica','bold');doc.setFontSize(10);doc.text(vals[i],M+i*colW+5,y+10);
+  });y+=26;
+
+  doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(60,50,30);
+  parcelas.forEach(p=>{
+    const pv=v*(p.pct/100);
+    doc.text(`• ${p.label} (${p.pct}%): ${v>0&&ok?fmt(pv):'A definir'}`,M,y);y+=6;
+  });y+=6;
+
+  if(obs){
+    doc.setFont('helvetica','bolditalic');doc.setFontSize(9);doc.setTextColor(100,80,40);
+    const lines=doc.splitTextToSize('Obs.: '+obs,W-2*M);
+    doc.text(lines,M,y);y+=lines.length*5+6;
+  }
+
+  if(y>250){doc.addPage();y=20;}
   doc.setDrawColor(200,185,150);
-  doc.line(M,y+20,M+75,y+20);
-  doc.line(W-M-75,y+20,W-M,y+20);
-  doc.setFont('helvetica','normal');
-  doc.setFontSize(8);
-  doc.setTextColor(120,100,70);
+  doc.line(M,y+20,M+75,y+20);doc.line(W-M-75,y+20,W-M,y+20);
+  doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(120,100,70);
   doc.text('Contratante',M+15,y+25);
   doc.text('JSouza Engenharia e Topografia',W-M-65,y+25);
   doc.text(resp,W-M-55,y+30);
-  y += 38;
 
-  // FOOTER
-  doc.setFillColor(44,32,16);
-  doc.rect(0,285,W,12,'F');
-  doc.setTextColor(180,160,100);
-  doc.setFont('helvetica','normal');
-  doc.setFontSize(7.5);
+  doc.setFillColor(44,32,16);doc.rect(0,285,W,12,'F');
+  doc.setTextColor(180,160,100);doc.setFont('helvetica','normal');doc.setFontSize(7.5);
   doc.text('JSouza Engenharia e Topografia LTDA  |  CNPJ 40.420.664/0001-24  |  Santarém — PA',W/2,291,{align:'center'});
   doc.setTextColor(100,90,70);
   doc.text('Este documento é uma proposta comercial e não possui validade jurídica sem as assinaturas das partes.',W/2,295.5,{align:'center'});
 
-  const nomeArq = `Orcamento_JSouza_${nome.replace(/\s/g,'_')}_${hoje.replace(/\//g,'-')}.pdf`;
-  doc.save(nomeArq);
+  doc.save(`Orcamento_JSouza_${nome.replace(/\s/g,'_')}_${hoje.replace(/\//g,'-')}.pdf`);
 }
 
 renderServices();
+renderParcelas();
 </script>
 </body>
 </html>
