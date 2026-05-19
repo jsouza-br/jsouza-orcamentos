@@ -121,10 +121,7 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);min-
 
 <header class="app-header">
   <div class="logo-area">
-    <svg class="logo-hex" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <polygon points="40,4 74,22 74,58 40,76 6,58 6,22" fill="#E8C84A"/>
-      <text x="40" y="52" text-anchor="middle" font-family="'Barlow Condensed',sans-serif" font-weight="800" font-size="34" fill="#2C2010">JS</text>
-    </svg>
+    <img src="logo.png" alt="JSouza Logo" style="width:42px;height:42px;object-fit:contain">
     <div><span>J SOUZA</span><small>Engenharia e Topografia</small></div>
   </div>
   <div class="header-badge">Santarém — PA</div>
@@ -414,7 +411,7 @@ function copyWpp(){
   });
 }
 
-function gerarPDF(){
+async function gerarPDF(){
   if(selectedServices.length===0){alert('Selecione ao menos um serviço.');return;}
   const {jsPDF}=window.jspdf;
   const doc=new jsPDF({unit:'mm',format:'a4'});
@@ -432,12 +429,23 @@ function gerarPDF(){
   const svcsObj=selectedServices.map(x=>({svc:SERVICES.find(sv=>sv.id===x.id),valor:parseFloat(x.valor)||0}));
   const W=210,M=18;let y=0;
 
+  // Carrega logo real
+  let logoData=null;
+  try{
+    const r=await fetch('logo.png');
+    const blob=await r.blob();
+    logoData=await new Promise(res=>{const fr=new FileReader();fr.onload=()=>res(fr.result);fr.readAsDataURL(blob);});
+  }catch(e){}
+
   doc.setFillColor(44,32,16);doc.rect(0,0,W,42,'F');
-  doc.setFillColor(232,200,74);
-  const hx=M+3,hy=8,hw=20;
-  doc.roundedRect(hx,hy,hw,hw,2,2,'F');
-  doc.setTextColor(44,32,16);doc.setFont('helvetica','bold');doc.setFontSize(11);doc.text('JS',hx+6,hy+13);
-  doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.setFontSize(16);doc.text('J SOUZA',hx+hw+6,hy+8);
+  const hx=M+3,hy=6,hw=28;
+  if(logoData){
+    doc.addImage(logoData,'PNG',hx,hy,hw,hw);
+  } else {
+    doc.setFillColor(232,200,74);doc.roundedRect(hx,hy+2,20,20,2,2,'F');
+    doc.setTextColor(44,32,16);doc.setFont('helvetica','bold');doc.setFontSize(11);doc.text('JS',hx+6,hy+15);
+  }
+  doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.setFontSize(16);doc.text('J SOUZA',hx+hw+6,hy+10);
   doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(232,200,74);doc.text('ENGENHARIA E TOPOGRAFIA',hx+hw+6,hy+14);
   doc.setTextColor(200,200,200);doc.text('Santarém — PA  |  CFT-PA',hx+hw+6,hy+19.5);
   doc.setFillColor(232,200,74);doc.roundedRect(W-M-40,hy,40,15,2,2,'F');
