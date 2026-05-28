@@ -88,7 +88,8 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);min-
 .svc-breakdown{background:var(--bg);border-radius:8px;padding:1rem;margin-bottom:1rem}
 .svc-breakdown-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
 .svc-breakdown-row:last-child{border-bottom:none;font-weight:700;margin-top:4px;padding-top:8px}
-.wpp-box{background:var(--bg);border-radius:8px;padding:1.25rem;font-size:13px;line-height:1.8;white-space:pre-wrap;font-family:'Barlow',sans-serif;color:var(--text);max-height:420px;overflow-y:auto;border:1px solid var(--border)}
+.wpp-box{background:var(--bg);border-radius:8px;padding:1.25rem;font-size:13px;line-height:1.8;font-family:'Barlow',sans-serif;color:var(--text);border:1px solid var(--border);width:100%;min-height:340px;resize:vertical;outline:none;transition:border-color .15s}
+.wpp-box:focus{border-color:var(--amarelo)}
 .wpp-actions{display:flex;gap:10px;margin-top:1rem;flex-wrap:wrap}
 .docs-list{display:flex;flex-direction:column;gap:6px;margin-bottom:1.25rem}
 .doc-item{display:flex;align-items:center;gap:10px;background:var(--bg);border-radius:8px;padding:.75rem 1rem;font-size:13px}
@@ -383,7 +384,8 @@ function renderResult(){
       ?parcelas.map(p=>`  • ${p.label} (${p.pct}%): ${v>0?fmt(v*(p.pct/100)):'—'}`).join('\n')
       :'  A combinar';
     const txt=`Olá, ${nome}! Tudo bem? 😊\n\nSegue o orçamento para o(s) serviço(s) solicitado(s):\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━\n🏢 *JSouza Engenharia e Topografia*\n📍 Santarém — PA\n━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n*SERVIÇO(S):*\n${svcsTexto}\n\n*IMÓVEL/LOCAL:* ${local}${area?'\n*ÁREA:* '+area:''}${valoresTexto}\n\n*O QUE ESTÁ INCLUSO:*\n${entsTexto}\n\n*DOCUMENTOS NECESSÁRIOS:*\n${docsTexto}\n\n*PRAZO DE ENTREGA:* ${prazo}\n\n*FORMA DE PAGAMENTO:*\n${pagTexto}${obs?'\n\n*OBS.:* '+obs:''}\n\n*Responsável técnico:* ${resp}\n\nQualquer dúvida, estou à disposição! 🤝\n_JSouza Engenharia e Topografia_`;
-    html=`<div class="wpp-box" id="wpp-text">${escapeHtml(txt)}</div>
+    html=`<div style="font-size:11px;color:var(--text-muted);margin-bottom:6px;font-weight:600;letter-spacing:.04em">✏️ Texto editável — ajuste antes de copiar</div>
+    <textarea class="wpp-box" id="wpp-text">${txt}</textarea>
     <div class="wpp-actions">
       <button class="btn btn-green" onclick="copyWpp()">📋 Copiar texto</button>
       <button class="btn btn-yellow" onclick="gerarPDF()">📄 Gerar PDF</button>
@@ -405,7 +407,8 @@ function renderResult(){
 function escapeHtml(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 
 function copyWpp(){
-  navigator.clipboard.writeText(document.getElementById('wpp-text').innerText).then(()=>{
+  const el=document.getElementById('wpp-text');
+  navigator.clipboard.writeText(el.value).then(()=>{
     const btn=event.target;btn.textContent='✅ Copiado!';
     setTimeout(()=>btn.textContent='📋 Copiar texto',2500);
   });
